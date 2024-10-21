@@ -1,26 +1,16 @@
-import express from 'express';
-import cors from 'cors';
+import app from './src/app.js';
+import dotenv from 'dotenv';
 
+dotenv.config();
 
+const PORT = process.env.PORT || 3056;
 
-// app config
-const app = express();
-const port = 4000;
+const server = app.listen(PORT, () => {
+    console.log(`Server is running on port http://localhost:${PORT}`);
+});
 
-// middleware
-app.use(express.json());
-app.use(cors());
-
-app.get("/",(req,res)=>{
-    res.send("API Working")
-})
-
-app.listen(port,()=>{
-    console.log(`Server is running on http://localhost:${port}`)
-})
-
-// mongodb+srv://isminhne:vungocminh2572004@gmail.com@cluster0.ol1jr.mongodb.net/?
-
-
-// note cua minh: mongodb+srv://isminhne:vungocminh2572004@gmail.com@cluster0.ol1jr.mongodb.net/?
-//retryWrites=true&w=majority&appName=Cluster0
+process.on('SIGINT', () => {
+    server.close();
+    console.log('Server is closed');
+    process.exit();
+});
