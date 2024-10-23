@@ -10,6 +10,7 @@ const config = {
   MONGO_PORT: process.env.MONGO_PORT || 27017,
   MONGO_DB: process.env.MONGO_DB || 'hea-food',
   MONGO_URL: process.env.MONGO_URL ||  'mongodb://localhost:27017/hea-food',
+  SECRET_KEY_JWT: process.env.SECRET_KEY_JWT || 'secretkeyjwt',
 }
 
 export default config;
