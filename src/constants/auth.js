@@ -1,1 +1,1 @@
-export const TTL_TOKEN = 60 * 60 * 24 * 30; // 30 days
+export const TTL_TOKEN = 30 * 24 * 60 * 60 * 1000; // 30 days

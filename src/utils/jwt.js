@@ -16,6 +16,7 @@ export const verifyJwt = token => new Promise((resolve, reject) => {
     if (err) return reject(err);
 
     if (decoded.expired < Date.now()) {
+      console.log(decoded.expired, Date.now());
       reject(new AuthenticationError('Token expired'));
     }
 

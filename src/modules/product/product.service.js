@@ -34,7 +34,9 @@ const getProducts = async ({
   order,
   search
 }) => {
-  const options = {};
+  const options = {
+    populate: 'category'
+  };
   if (page) {
     options.page = parseInt(page);
   }
@@ -109,7 +111,7 @@ const getProduct = async ({
       _id: identifier
     });
   }
-  const product = await Product.findOne(query);
+  const product = await Product.findOne(query).populate('category');
   if (!product) {
     throw new BadRequestError('Product not found');
   }
@@ -130,7 +132,9 @@ const getProductByCategory = async ({
     throw new BadRequestError('Category not found');
   }
 
-  const options = {};
+  const options = {
+    populate: 'category'
+  };
   if (page) {
     options.page = parseInt(page);
   }
