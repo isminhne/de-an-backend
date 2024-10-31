@@ -6,7 +6,9 @@ const getOrders = async ({
   sortBy,
   order
 }) => {
-  const options = {};
+  const options = {
+    populate: ["products.product", "user"]
+  };
   if (page) {
     options.page = parseInt(page);
   }
