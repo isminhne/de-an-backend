@@ -4,12 +4,14 @@ import {ORDER_STATUS} from "../../constants/order.js";
 const placeOrder = async ({
   user,
   products,
-  total
+  total,
+  deliveryInfo
 }) => {
   return await Order.create({
     user,
     products,
-    total
+    total,
+    deliveryInfo
   });
 }
 

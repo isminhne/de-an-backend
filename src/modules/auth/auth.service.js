@@ -12,13 +12,22 @@ const register = async ({
   if (!username || !email || !password) {
     throw new BadRequestError('Missing required fields');
   }
+  const existingUser = await User.findOne({email});
+  if (existingUser) {
+    throw new BadRequestError('User already exists');
+  }
 
-  return await User.createUser({
+  const user = await User.createUser({
     username,
     email,
     password,
     phone
   });
+
+  return {
+    email: user.email,
+    token: createJwtToken({email: user.email, role: user.role}, TTL_TOKEN)
+  }
 }
 
 const login = async ({

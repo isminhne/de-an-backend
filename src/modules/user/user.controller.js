@@ -16,7 +16,8 @@ const placeOrder = catchAsync(async (req, res, next) => {
   const data = await UserService.placeOrder({
     user: req.user._id,
     products: req.body.products,
-    total: req.body.total
+    total: req.body.total,
+    deliveryInfo: req.body.deliveryInfo
   });
   res.json(data);
 });

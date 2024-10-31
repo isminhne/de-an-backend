@@ -9,6 +9,35 @@ const OrderSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  deliveryInfo: {
+    firstName: {
+      type: String,
+    },
+    lastName: {
+      type: String,
+    },
+    email: {
+      type: String,
+    },
+    street: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    state: {
+      type: String,
+    },
+    zipCode: {
+      type: String,
+    },
+    country: {
+      type: String,
+    },
+    phone: {
+      type: String
+    }
+  },
   products: [{
     product: {
       type: mongoose.Schema.Types.ObjectId,
